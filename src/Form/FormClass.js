@@ -18,6 +18,7 @@ class FormClass extends Component{
     }
 
     handleSubmit = () => {
+        e.preventDefault()
         const tempObj = {
             name : this.state.name,
             department : this.state.department
