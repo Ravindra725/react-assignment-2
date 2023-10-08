@@ -4,7 +4,7 @@ import FormClass from './Form/FormClass';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Elevation Acadamay Form</h1>
       <FormClass />
     </div>
