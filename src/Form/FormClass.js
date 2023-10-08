@@ -1,59 +1,63 @@
-import { Component } from 'react';
-import './Form.css'
-
+import React, { Component } from 'react'
+import './Form.css';
 
 class FormClass extends Component{
     constructor(){
         super();
-        this.state = {
-            name : '',
-            department : '',
-            FmData : []
+        this.state={
+            name: '',
+            dept: '',
+            rating: '',
+            subData:[]
         }
+
     }
 
-
-    handleChange = (e)=> {
-        this.setState({[e.target.name] : e.target.value})
+    handleChange=(event)=>{
+        this.setState({[event.target.name]:event.target.value})
     }
 
-    handleSubmit = () => {
-        e.preventDefault()
-        const tempObj = {
-            name : this.state.name,
-            department : this.state.department
+    handleSubmit=()=>{
+        const tempobj={
+            name:this.state.name,
+            dept: this.state.dept,
+            rating: this.state.rating
         }
-        this.state.FmData.push(tempObj)
-        this.setState({
-            FmData : this.state.FmData
-        })
+        this.state.subData.push(tempobj)
+        this.setState({subData: this.state.subData})
     }
 
     render(){
         return(
             <>
-            <form className='form'>
-                <label htmlFor='name'>Name </label>
-                <input type='text' name='name' id='name' onChange={this.handleChange}/> <br/>
-                <br/>
-                <label htmlFor='depart'>Department </label>
-                <input type='text' name='department' id='depart' onChange={this.handleChange}/> <br/> <br/>
-                <label htmlFor='rating'>Rating </label>
-                <input type='text' name='rating' id='rating' onChange={this.handleChange}/> <br/><br/>
+            <div className='Formcompo'>
+                <label className='name'>Name</label>
+                <input type='text' name='name' placeholder='enter name' onChange={this.handleChange} /> <br/>
+                <label className='name'>Department</label>
+                <input type='text' name='dept' placeholder='enter department' onChange={this.handleChange} /> <br/>
+                <label className='name'>Rating</label>
+                <input type='text' name='rating' placeholder='enter rating' onChange={this.handleChange} /> <br/>
                 <button onClick={this.handleSubmit}>Submit</button>
-            </form>
-            {this.state.FmData.map((item, index)=> {
-                console.log(item);
-                return(
-                    <div key={index}>
-                        <p>Index : {index}</p>
-                        <h2>{item.name}</h2>
-                        <h2>{item.department}</h2>
-                    </div>
-                )
-            })}
+            </div>
+            
+            <div className='form'>
+                {this.state.subData.map((item,index)=>{
+                    console.log(item);
+                    return(
+                        <div className='content' key={index}>
+                           <span>name:{item.name}</span> || 
+                           <span>dept:{item.dept}</span> || 
+                           <span>rating:{item.rating}</span>
+                        </div>
+                    )
+                })}
+            </div>
+            
+            
             </>
         )
     }
+
+   
 }
 export default FormClass
